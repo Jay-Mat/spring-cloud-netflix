@@ -15,7 +15,10 @@ pipeline {
             steps {
                 // Assuming SonarQube server is accessible at 'http://localhost:9000'
                 // Replace with your SonarQube server URL and token
-                withSonarQubeEnv('http://localhost:9000', 'SonarToken') {
+                   withSonarQubeEnv(
+                    serverUrl: 'http://localhost:9000', 
+                    token: 'SonarToken' 
+                ) {
                     sh 'mvn sonar:sonar'
                 }
             }
