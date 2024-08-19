@@ -1,5 +1,14 @@
 pipeline {
     agent any 
+
+    triggers {
+        pollSCM '* * * * *'
+    }
+    tools {
+        maven 'Maven'
+    }
+
+
     stages {
         stage('Checkout') {
             steps {
