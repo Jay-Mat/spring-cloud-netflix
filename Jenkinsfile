@@ -13,9 +13,9 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                // Assuming SonarQube server is accessible at 'http://sonarqube-server:9000'
+                // Assuming SonarQube server is accessible at 'http://localhost:9000'
                 // Replace with your SonarQube server URL and token
-                withSonarQubeEnv('http://sonarqube-server:9000', 'sqa_9c14e26e0689b56ebcc235ca0b9cd1f383a3e969') {
+                withSonarQubeEnv('http://localhost:9000', 'sqa_9c14e26e0689b56ebcc235ca0b9cd1f383a3e969') {
                     sh 'mvn sonar:sonar'
                 }
             }
