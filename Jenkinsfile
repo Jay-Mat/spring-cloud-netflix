@@ -11,16 +11,14 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('SonarQube Analysis') {
+        stage('Sonar Analysis') {
+            environment {
+                scannerHome = tool "SonarScanner";
+            }
             steps {
-                // Assuming SonarQube server is accessible at 'http://localhost:9000'
-                // Replace with your SonarQube server URL and token
-                   withSonarQubeEnv(
-                    serverUrl: 'http://localhost:9000', 
-                    token: 'SonarToken' 
-                ) {
-                    sh 'mvn sonar:sonar'
-                }
+                withSonarQubeEnv('SonarScanner') {
+                sh "${scannerHome}/bin/sonar-scanner"         
+}
             }
         }
         stage('Test') {
